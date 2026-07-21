@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT TTS</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🎤 PROJECT TTS</h1>
+        <p class="subtitle">Offline Text To Speech Converter</p>
+
+        <form action="/speak" method="post">
+
+            <textarea
+                name="text"
+                placeholder="Enter text here..."
+                rows="8"
+                required></textarea>
+
+            <label for="voice">Voice</label>
+
+            <select id="voice" name="voice">
+
+                {% for voice in voices %}
+
+                <option value="{{ voice.id }}">
+
+                    {{ voice.name }}
+
+                </option>
+
+                {% endfor %}
+
+            </select>
+
+            <label for="speed">Speed</label>
+
+            <input
+                type="range"
+                id="speed"
+                name="speed"
+                min="100"
+                max="300"
+                value="200">
+
+            <label for="volume">Volume</label>
+
+            <input
+                type="range"
+                id="volume"
+                name="volume"
+                min="0"
+                max="100"
+                value="100">
+
+            <button type="submit">
+                🔊 Speak
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>
